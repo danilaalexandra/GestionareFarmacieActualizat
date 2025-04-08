@@ -1,51 +1,84 @@
 ﻿using FarmacieLibrarie;
 using NivelStocareDate;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace FarmacieInterfata
 {
-    public partial class FormMedicament: Form
+    public partial class FormMedicament : Form
     {
         private AdministrareMedicamentFisier adminMedicamente;
+
         public FormMedicament()
         {
             InitializeComponent();
             adminMedicamente = new AdministrareMedicamentFisier("medicamente.txt");
+
             
+            InitializareComboBoxCategorie();
+        }
+        private void InitializareComboBoxCategorie()
+        {
+            List<object> categorii = new List<object>();
+            categorii.Add("-- Selectează categoria --");
+            categorii.AddRange(Enum.GetValues(typeof(Categorie)).Cast<object>());
+            comboBox1.DataSource = categorii;
+            comboBox1.SelectedIndex = 0;
         }
 
-        private bool ValidareInput(out string mesaj)
+
+        private bool ValidareInput()
         {
-            mesaj = string.Empty;
+            bool valid = true;
+            errorProvider1.Clear();
+
+            
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = false;
+            label8.Visible = false;
+
 
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                mesaj = "Denumirea este obligatorie!";
-                return false;
+                errorProvider1.SetError(textBox1, "Denumirea este obligatorie!");
+                label5.Text = "Denumirea este obligatorie!";
+                label5.Visible = true;
+                valid = false;
             }
 
             if (!radioButton1.Checked && !radioButton2.Checked)
             {
-                mesaj = "Selectați dacă medicamentul necesită rețetă.";
-                return false;
+                errorProvider1.SetError(radioButton2, "Selectați dacă necesită rețetă!");
+                label7.Text = "Selectați dacă necesită rețetă!";
+                label7.Visible = true;
+                valid = false;
+            }
+            if (numericUpDown1.Value <= 0)
+            {
+                errorProvider1.SetError(numericUpDown1, "Introduceți un preț mai mare decât 0!");
+                label6.Text = "Introduceți un preț mai mare decât 0!";
+                label6.Visible = true;
+                valid = false;
             }
 
-            return true;
+            if (!(comboBox1.SelectedItem is Categorie))
+            {
+                errorProvider1.SetError(comboBox1, "Selectați o categorie!");
+                label8.Text = "Selectați o categorie!";
+                label8.Visible = true;
+                valid = false;
+            }
+
+            return valid;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!ValidareInput(out string mesaj))
+            if (!ValidareInput())
             {
-                MessageBox.Show(mesaj, "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -54,20 +87,17 @@ namespace FarmacieInterfata
                 string denumire = textBox1.Text.Trim();
                 float pret = (float)numericUpDown1.Value;
                 bool necesitaReteta = radioButton1.Checked;
-
-                if (comboBox1.SelectedItem == null)
-                {
-                    MessageBox.Show("Selectați o categorie pentru medicament.", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 Categorie categorieAleasa = (Categorie)comboBox1.SelectedItem;
 
                 Medicament medicament = new Medicament(denumire, pret, necesitaReteta)
                 {
                     categorie = categorieAleasa
                 };
+
                 adminMedicamente.AddMedicament(medicament);
+                this.Hide();
+                FormAfisareMedicamente formAfisare = new FormAfisareMedicamente();
+                formAfisare.Show();
 
                 MessageBox.Show("Medicament adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -78,28 +108,24 @@ namespace FarmacieInterfata
                 radioButton2.Checked = false;
                 comboBox1.SelectedIndex = -1;
                 textBox1.Focus();
+
+                errorProvider1.Clear();
+                label4.Visible = false;
+                label6.Visible = false;
+                label8.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Eroare la salvare: " + ex.Message, "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-              
-    }
-        private void button3_click(object sender, EventArgs e)
-        {
-            // Creează o instanță a ferestrei FormClient
-            Form1 form = new Form1();
-
-            // Afișează fereastra
-            form.Show();
-
-
-            this.Hide();
         }
 
-        private void comboBox(object sender, EventArgs e)
+        private void button3_click(object sender, EventArgs e)
         {
-            comboBox1.DataSource = Enum.GetValues(typeof(Categorie));
+            FormAfisareMedicamente form = new FormAfisareMedicamente();
+            
+            form.Show();
+            this.Hide();
         }
     }
 }

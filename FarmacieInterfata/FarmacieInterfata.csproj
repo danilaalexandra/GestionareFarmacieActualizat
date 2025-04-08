@@ -52,6 +52,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAfisareClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAfisareClient.Designer.cs">
+      <DependentUpon>FormAfisareClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAfisareMedicamente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAfisareMedicamente.Designer.cs">
+      <DependentUpon>FormAfisareMedicamente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +80,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAfisareClient.resx">
+      <DependentUpon>FormAfisareClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAfisareMedicamente.resx">
+      <DependentUpon>FormAfisareMedicamente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>

@@ -11,9 +11,9 @@ namespace FarmacieLibrarie
         private const int PRENUME = 1;
         private const int DATA_NASTERII = 2;
 
-        string nume { get; set; }
-        string prenume { get; set; }
-        DateTime data_nasterii { get; set; }
+        public string nume { get; set; }
+        public string prenume { get; set; }
+        public DateTime data_nasterii { get; set; }
 
         public Client()
         {
@@ -39,7 +39,7 @@ namespace FarmacieLibrarie
 
             this.nume = dateFisier[NUME];
             this.prenume = dateFisier[PRENUME];
-            this.data_nasterii = DateTime.Parse(dateFisier[DATA_NASTERII]);
+            this.data_nasterii = DateTime.ParseExact(dateFisier[DATA_NASTERII],"dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture);
         }
         public string ConversieLaSir_PentruFisier()
         {

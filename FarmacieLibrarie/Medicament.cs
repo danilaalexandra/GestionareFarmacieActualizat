@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 
 
@@ -48,8 +49,9 @@ namespace FarmacieLibrarie
             //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ConversieLaSir_PentruFisier()
 
             this.denumire = dateFisier[DENUMIRE];
-            this.pret = float.Parse(dateFisier[PRET]);
-            this.necesitaReteta = Convert.ToBoolean(dateFisier[NECESITARETETA]);
+            this.pret = float.Parse(dateFisier[PRET].Replace(',', '.'), CultureInfo.InvariantCulture);
+            string retetaStr = dateFisier[NECESITARETETA].Trim().ToLower();
+            this.necesitaReteta = (retetaStr == "da" || retetaStr == "true" || retetaStr == "1");
             this.categorie = (Categorie)Enum.Parse(typeof(Categorie), dateFisier[CATEGORIE]);
         }
 
@@ -58,7 +60,7 @@ namespace FarmacieLibrarie
             string obiectMedicamentPentruFisier = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}",
                 SEPARATOR_PRINCIPAL_FISIER,
                 (denumire ?? " NECUNOSCUT "),
-                pret.ToString(),
+                pret.ToString(CultureInfo.InvariantCulture),
                 (necesitaReteta ? "da" : "nu"),
                 categorie.ToString());
 

@@ -20,11 +20,9 @@ namespace FarmacieInterfata
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Creează o instanță a ferestrei FormClient
-            FormClient formClient = new FormClient();
+            FormAfisareClienti formAClient = new FormAfisareClienti();
 
-            // Afișează fereastra
-            formClient.Show();
+            formAClient.Show();
 
 
             this.Hide();
@@ -34,11 +32,11 @@ namespace FarmacieInterfata
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Creează o instanță a ferestrei FormClient
-            FormMedicament formMedicament = new FormMedicament();
+            
+            FormAfisareMedicamente formAMedicament = new FormAfisareMedicamente();
 
-            // Afișează fereastra
-            formMedicament.Show();
+            
+            formAMedicament.Show();
 
 
             this.Hide();
@@ -52,7 +50,7 @@ namespace FarmacieInterfata
         }
         private void FarmacieForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) // Apăsare Escape
+            if (e.KeyCode == Keys.Escape) 
             {
                 Application.Exit();
             }
