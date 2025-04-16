@@ -28,6 +28,7 @@ namespace FarmacieInterfata
        
         public void AdaugaClientInTabel(Client client)
         {
+
             dataGridView1.Rows.Add(client.nume, client.prenume, client.data_nasterii.ToShortDateString());
         }
 
@@ -71,6 +72,32 @@ namespace FarmacieInterfata
             this.Hide();
         }
 
+        private void buttonCauta(object sender, EventArgs e)
+        {
+            string cuvant = textCautare.Text.Trim();
+
+            if (string.IsNullOrEmpty(cuvant))
+            {
+                IncarcaClientiDinFisier();
+                return;
+            }
+
+            int nrClienti;
+            Client[] totiClientii = adminClienti.GetClient(out nrClienti);
+
+            Client[] rezultate = AdministrareClientFisier.cautareINnume(totiClientii, cuvant);
+
+            dataGridView1.Rows.Clear();
+            foreach (var client in rezultate)
+            {
+                if (client != null)
+                {
+                    AdaugaClientInTabel(client);
+                }
+            }
+        }
        
+
+
     }
 }

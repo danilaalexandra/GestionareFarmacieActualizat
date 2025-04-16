@@ -1,5 +1,8 @@
 ﻿using FarmacieLibrarie;
 using System.IO;
+using System.Linq;
+using System;
+
 
 namespace NivelStocareDate
 {
@@ -48,5 +51,33 @@ namespace NivelStocareDate
 
             return medicamente;
         }
+        public static Medicament[] cautareINdenumire(Medicament[] medicamente, string cuvantCautat)
+        {
+            return medicamente
+                .Where(m => m != null && m.denumire.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToArray();
+        }
+
+        public bool MedicamentExista(Medicament medicamentNou)
+        {
+            int nrMedicamente;
+            Medicament[] medicamente = GetMedicamente(out nrMedicamente);
+
+            foreach (var medicament in medicamente)
+            {
+                if (medicament != null &&
+                    medicament.denumire.Equals(medicamentNou.denumire, StringComparison.OrdinalIgnoreCase) &&
+                    medicament.pret == medicamentNou.pret &&
+                    medicament.necesitaReteta == medicamentNou.necesitaReteta &&
+                    medicament.categorie == medicamentNou.categorie)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
     }
 }

@@ -66,14 +66,22 @@ namespace FarmacieInterfata
             try
             {
                 Client client = new Client(textBox1.Text.Trim(), textBox2.Text.Trim(), dateTimePicker1.Value);
+
+                
+                if (adminClienti.ClientExista(client))
+                {
+                    MessageBox.Show("Clientul există deja!", "Avertisment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 adminClienti.AddClient(client);
+
                 this.Hide();
                 FormAfisareClienti formAfisare = new FormAfisareClienti();
                 formAfisare.Show();
 
                 MessageBox.Show("Client adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
                 textBox1.Clear();
                 textBox2.Clear();
                 dateTimePicker1.Value = DateTime.Today;
@@ -89,6 +97,7 @@ namespace FarmacieInterfata
                 MessageBox.Show("Eroare la salvare: " + ex.Message, "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void button2_click(object sender, EventArgs e)
         {

@@ -71,10 +71,12 @@ namespace FarmacieInterfata
                 label8.Visible = true;
                 valid = false;
             }
+            
 
             return valid;
         }
 
+         
         private void button2_Click(object sender, EventArgs e)
         {
             if (!ValidareInput())
@@ -93,7 +95,11 @@ namespace FarmacieInterfata
                 {
                     categorie = categorieAleasa
                 };
-
+                if (adminMedicamente.MedicamentExista(medicament))
+                {
+                    MessageBox.Show("Medicamentul există deja!", "Avertisment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 adminMedicamente.AddMedicament(medicament);
                 this.Hide();
                 FormAfisareMedicamente formAfisare = new FormAfisareMedicamente();

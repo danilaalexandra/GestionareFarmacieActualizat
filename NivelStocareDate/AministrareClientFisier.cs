@@ -1,5 +1,7 @@
 ﻿using FarmacieLibrarie;
 using System.IO;
+using System.Linq;
+using System;
 
 namespace NivelStocareDate
 {
@@ -47,6 +49,31 @@ namespace NivelStocareDate
             }
 
             return clienti;
+        }
+        public static Client[] cautareINnume(Client[] clienti, string cuvantCautat)
+        {
+            return clienti
+                .Where(m => m != null && m.nume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToArray();
+        }
+
+        public bool ClientExista(Client clientNou)
+        {
+            int nrClienti;
+            Client[] clienti = GetClient(out nrClienti);
+
+            foreach (var client in clienti)
+            {
+                if (client != null &&
+                    client.nume.Equals(clientNou.nume, StringComparison.OrdinalIgnoreCase) &&
+                    client.prenume.Equals(clientNou.prenume, StringComparison.OrdinalIgnoreCase) &&
+                    client.data_nasterii.Date == clientNou.data_nasterii.Date)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
