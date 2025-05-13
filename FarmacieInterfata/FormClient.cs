@@ -56,7 +56,7 @@ namespace FarmacieInterfata
             return valid;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void buttonAdauga_Click_1(object sender, EventArgs e)
         {
             if (!ValidareInput())
             {
@@ -67,7 +67,7 @@ namespace FarmacieInterfata
             {
                 Client client = new Client(textBox1.Text.Trim(), textBox2.Text.Trim(), dateTimePicker1.Value);
 
-                
+
                 if (adminClienti.ClientExista(client))
                 {
                     MessageBox.Show("Clientul există deja!", "Avertisment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -99,11 +99,12 @@ namespace FarmacieInterfata
         }
 
 
-        private void button2_click(object sender, EventArgs e)
+        private void buttonInapoi_click(object sender, EventArgs e)
         {
             FormAfisareClienti form = new FormAfisareClienti();
             form.Show();
             this.Hide();
         }
+
     }
 }

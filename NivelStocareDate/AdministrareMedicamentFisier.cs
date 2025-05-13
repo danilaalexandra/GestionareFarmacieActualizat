@@ -79,5 +79,30 @@ namespace NivelStocareDate
             return false;
         }
 
+        public bool StergeMedicament(string denumire)
+        {
+            int nrMedicamente;
+            Medicament[] medicamente = GetMedicamente(out nrMedicamente);
+            bool sters = false;
+
+            using (StreamWriter sw = new StreamWriter("medicamente.txt", false))
+            {
+                foreach (var m in medicamente)
+                {
+                    if (m != null && m.denumire != denumire)
+                    {
+                        sw.WriteLine(m.ConversieLaSir_PentruFisier());
+                    }
+                    else if (m != null && m.denumire == denumire)
+                    {
+                        sters = true;
+                    }
+                }
+            }
+
+            return sters;
+        }
+
+
     }
 }

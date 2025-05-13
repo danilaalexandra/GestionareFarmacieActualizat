@@ -18,7 +18,7 @@ namespace FarmacieInterfata
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdaugaClient_Click(object sender, EventArgs e)
         {
             FormAfisareClienti formAClient = new FormAfisareClienti();
 
@@ -30,7 +30,7 @@ namespace FarmacieInterfata
 
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonAdaugaMedicament_Click(object sender, EventArgs e)
         {
             
             FormAfisareMedicamente formAMedicament = new FormAfisareMedicamente();
@@ -42,19 +42,7 @@ namespace FarmacieInterfata
             this.Hide();
         }
 
-
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void FarmacieForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) 
-            {
-                Application.Exit();
-            }
-        }
+        
     }
 }
 

@@ -77,7 +77,7 @@ namespace FarmacieInterfata
         }
 
          
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonAdauga_click(object sender, EventArgs e)
         {
             if (!ValidareInput())
             {
@@ -107,7 +107,7 @@ namespace FarmacieInterfata
 
                 MessageBox.Show("Medicament adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
+
                 textBox1.Clear();
                 numericUpDown1.Value = 0;
                 radioButton1.Checked = false;
@@ -126,12 +126,14 @@ namespace FarmacieInterfata
             }
         }
 
-        private void button3_click(object sender, EventArgs e)
+        private void buttonInapoi_click(object sender, EventArgs e)
         {
             FormAfisareMedicamente form = new FormAfisareMedicamente();
             
             form.Show();
             this.Hide();
         }
+
+ 
     }
 }

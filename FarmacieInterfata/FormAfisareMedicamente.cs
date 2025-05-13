@@ -46,14 +46,14 @@ namespace FarmacieInterfata
             }
         }
 
-        private void button_click(object sender, EventArgs e)
+        private void buttonAdauga_click(object sender, EventArgs e)
         {
             FormMedicament formMedicament = new FormMedicament();
             formMedicament.Show();
             this.Hide();
         }
 
-        private void button2_click(object sender, EventArgs e)
+        private void buttonInapoi_click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
             form.Show();
@@ -82,6 +82,33 @@ namespace FarmacieInterfata
                 {
                     AdaugaMedicamentInTabel(medicament);
                 }
+            }
+        }
+        private void buttonStergere_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string denumireSelectata = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+
+                var confirmare = MessageBox.Show($"Sigur dorești să ștergi medicamentul '{denumireSelectata}'?", "Confirmare", MessageBoxButtons.YesNo);
+                if (confirmare == DialogResult.Yes)
+                {
+                    bool sters = adminMedicamente.StergeMedicament(denumireSelectata);
+
+                    if (sters)
+                    {
+                        MessageBox.Show("Medicamentul a fost șters.");
+                        IncarcaMedicamenteDinFisier(); // Reîncarcă tabelul
+                    }
+                    else
+                    {
+                        MessageBox.Show("Medicamentul nu a fost găsit sau nu a putut fi șters.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selectează un medicament din listă pentru a-l șterge.");
             }
         }
 

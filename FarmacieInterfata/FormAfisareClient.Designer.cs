@@ -39,6 +39,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textCautare = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.varsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnNume,
             this.columnPrenume,
-            this.columnDataNaterii});
+            this.columnDataNaterii,
+            this.varsta});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -72,7 +75,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.Teal;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 75);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 75);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
@@ -111,7 +114,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Adauga Client nou";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button_click);
+            this.button1.Click += new System.EventHandler(this.buttonAdauga_click);
             // 
             // button2
             // 
@@ -121,7 +124,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Inapoi";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_click);
+            this.button2.Click += new System.EventHandler(this.buttonInapoi_click);
             // 
             // textCautare
             // 
@@ -140,12 +143,28 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.buttonCauta);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(713, 75);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Sterge";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnStergeClient_Click);
+            // 
+            // varsta
+            // 
+            this.varsta.HeaderText = "Varsta";
+            this.varsta.Name = "varsta";
+            // 
             // FormAfisareClienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textCautare);
             this.Controls.Add(this.button2);
@@ -169,5 +188,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textCautare;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varsta;
     }
 }

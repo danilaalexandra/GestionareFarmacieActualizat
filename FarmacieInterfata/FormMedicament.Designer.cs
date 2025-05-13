@@ -123,7 +123,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Adauga";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button2_Click);
+            this.button1.Click += new System.EventHandler(this.buttonAdauga_click);
             // 
             // groupBox1
             // 
@@ -165,7 +165,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "Inapoi";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button3_click);
+            this.button2.Click += new System.EventHandler(this.buttonInapoi_click);
             // 
             // comboBox1
             // 
@@ -174,7 +174,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(295, 21);
             this.comboBox1.TabIndex = 12;
-            //this.comboBox1.Click += new System.EventHandler(this.comboBox);
             // 
             // label4
             // 

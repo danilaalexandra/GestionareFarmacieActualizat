@@ -92,7 +92,6 @@
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Data Nasterii ";
-            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
@@ -104,7 +103,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Adauga";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.buttonAdauga_Click_1);
             // 
             // dateTimePicker1
             // 
@@ -121,7 +120,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Inapoi";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_click);
+            this.button2.Click += new System.EventHandler(this.buttonInapoi_click);
             // 
             // errorProvider1
             // 
@@ -148,7 +147,6 @@
             this.label4.Size = new System.Drawing.Size(0, 14);
             this.label4.TabIndex = 9;
             this.label4.Visible = false;
-            //this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 

@@ -75,5 +75,29 @@ namespace NivelStocareDate
 
             return false;
         }
+        public bool StergeClient(string nume, string prenume)
+        {
+            int nrClienti;
+            Client[] clienti = GetClient(out nrClienti);
+            bool sters = false;
+
+            using (StreamWriter sw = new StreamWriter("clienti.txt", false))
+            {
+                foreach (var c in clienti)
+                {
+                    if (c != null && (c.nume != nume || c.prenume != prenume))
+                    {
+                        sw.WriteLine(c.ConversieLaSir_PentruFisier());
+                    }
+                    else if (c != null && c.nume == nume && c.prenume == prenume)
+                    {
+                        sters = true;
+                    }
+                }
+            }
+
+            return sters;
+        }
+
     }
 }
