@@ -109,6 +109,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(627, 250);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Editare_doubleclick);
             // 
             // columnDenumire
             // 
@@ -145,7 +146,6 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Cauta";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.buttonCauta);
             // 
             // button4
             // 

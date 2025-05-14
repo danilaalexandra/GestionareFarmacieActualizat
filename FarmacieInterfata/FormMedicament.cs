@@ -10,7 +10,7 @@ namespace FarmacieInterfata
     public partial class FormMedicament : Form
     {
         private AdministrareMedicamentFisier adminMedicamente;
-
+        private Medicament medicamentEditat;
         public FormMedicament()
         {
             InitializeComponent();
@@ -18,6 +18,22 @@ namespace FarmacieInterfata
 
             
             InitializareComboBoxCategorie();
+        }
+
+        public FormMedicament(Medicament medicament)
+        {
+            InitializeComponent();
+            adminMedicamente = new AdministrareMedicamentFisier("medicamente.txt");
+            InitializareComboBoxCategorie();
+
+           
+            medicamentEditat = medicament;
+
+            textBox1.Text = medicament.denumire;
+            numericUpDown1.Value = (decimal)medicament.pret;
+            radioButton1.Checked = medicament.necesitaReteta;
+            radioButton2.Checked = !medicament.necesitaReteta;
+            comboBox1.SelectedItem = medicament.categorie;
         }
         private void InitializareComboBoxCategorie()
         {
@@ -95,6 +111,12 @@ namespace FarmacieInterfata
                 {
                     categorie = categorieAleasa
                 };
+
+                if (medicamentEditat != null)
+                {
+                    medicament.denumire = medicamentEditat.denumire; 
+                    adminMedicamente.StergeMedicament(medicamentEditat.denumire);
+                }
                 if (adminMedicamente.MedicamentExista(medicament))
                 {
                     MessageBox.Show("Medicamentul există deja!", "Avertisment", MessageBoxButtons.OK, MessageBoxIcon.Warning);

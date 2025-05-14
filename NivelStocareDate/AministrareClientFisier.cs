@@ -50,12 +50,16 @@ namespace NivelStocareDate
 
             return clienti;
         }
-        public static Client[] cautareINnume(Client[] clienti, string cuvantCautat)
+
+        public static Client[] CautareDupaNumeSauPrenume(Client[] clienti, string cuvantCautat)
         {
             return clienti
-                .Where(m => m != null && m.nume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(c => c != null &&
+                       (c.nume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        c.prenume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0))
                 .ToArray();
         }
+
 
         public bool ClientExista(Client clientNou)
         {

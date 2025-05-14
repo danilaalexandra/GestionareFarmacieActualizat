@@ -35,12 +35,12 @@
             this.columnNume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDataNaterii = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textCautare = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.varsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +87,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(673, 226);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Editare_doubleClick);
             // 
             // columnNume
             // 
@@ -102,6 +103,11 @@
             // 
             this.columnDataNaterii.HeaderText = "Data Naterii";
             this.columnDataNaterii.Name = "columnDataNaterii";
+            // 
+            // varsta
+            // 
+            this.varsta.HeaderText = "Varsta";
+            this.varsta.Name = "varsta";
             // 
             // button1
             // 
@@ -152,11 +158,6 @@
             this.button4.Text = "Sterge";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.btnStergeClient_Click);
-            // 
-            // varsta
-            // 
-            this.varsta.HeaderText = "Varsta";
-            this.varsta.Name = "varsta";
             // 
             // FormAfisareClienti
             // 

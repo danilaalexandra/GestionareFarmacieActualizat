@@ -54,9 +54,11 @@ namespace NivelStocareDate
         public static Medicament[] cautareINdenumire(Medicament[] medicamente, string cuvantCautat)
         {
             return medicamente
-                .Where(m => m != null && m.denumire.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(m => m != null && m.denumire.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0 )
                 .ToArray();
         }
+
+        
 
         public bool MedicamentExista(Medicament medicamentNou)
         {

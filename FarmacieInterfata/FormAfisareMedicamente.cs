@@ -1,6 +1,8 @@
 ﻿using FarmacieLibrarie;
 using NivelStocareDate;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FarmacieInterfata
@@ -60,7 +62,7 @@ namespace FarmacieInterfata
             this.Hide();
         }
 
-        private void buttonCauta(object sender, EventArgs e)
+           private void btnCauta_Click(object sender, EventArgs e)
         {
             string cuvant = textCautare.Text.Trim();
 
@@ -84,6 +86,9 @@ namespace FarmacieInterfata
                 }
             }
         }
+
+        
+
         private void buttonStergere_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -112,6 +117,32 @@ namespace FarmacieInterfata
             }
         }
 
-       
+        private void Editare_doubleclick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+               //Daca Valoarea este diferita de null, o schimba intr-o valoare implicita
+                string denumire = row.Cells[0].Value?.ToString();
+                float pret = float.Parse(row.Cells[1].Value?.ToString());
+                bool necesitaReteta = row.Cells[2].Value?.ToString() == "Da";
+                Categorie categorie = (Categorie)Enum.Parse(typeof(Categorie), row.Cells[3].Value?.ToString());
+
+                
+                Medicament medicamentEditat = new Medicament();
+                
+                medicamentEditat.denumire = denumire;
+                medicamentEditat.pret = pret;
+                medicamentEditat.necesitaReteta = necesitaReteta;
+                medicamentEditat.categorie = categorie;
+
+
+
+                FormMedicament formEditare = new FormMedicament(medicamentEditat);
+                formEditare.Show();
+                this.Hide();
+            }
+        }
     }
 }

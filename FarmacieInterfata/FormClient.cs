@@ -8,7 +8,7 @@ namespace FarmacieInterfata
     public partial class FormClient : Form
     {
         private AdministrareClientFisier adminClienti;
-
+        private Client clientEditat;
         public FormClient()
         {
             InitializeComponent();
@@ -20,6 +20,22 @@ namespace FarmacieInterfata
             label6.Visible = false;
         }
 
+        public FormClient(Client client)
+        {
+            InitializeComponent();
+            adminClienti = new AdministrareClientFisier("clienti.txt");
+
+
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+
+            clientEditat = client;
+
+            textBox1.Text = client.nume;
+            textBox2.Text = client.prenume;
+            dateTimePicker1.Value = client.data_nasterii;
+        }
         private bool ValidareInput()
         {
             bool valid = true;
@@ -67,6 +83,11 @@ namespace FarmacieInterfata
             {
                 Client client = new Client(textBox1.Text.Trim(), textBox2.Text.Trim(), dateTimePicker1.Value);
 
+                if(clientEditat != null)
+                {
+                    client.nume = clientEditat.nume;
+                    adminClienti.StergeClient(clientEditat.nume, clientEditat.prenume);
+                }
 
                 if (adminClienti.ClientExista(client))
                 {

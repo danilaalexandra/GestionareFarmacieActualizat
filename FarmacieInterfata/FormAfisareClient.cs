@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace FarmacieInterfata 
+namespace FarmacieInterfata
 {
     public partial class FormAfisareClienti : Form
     {
@@ -21,7 +21,7 @@ namespace FarmacieInterfata
             dataGridView1.Columns[1].Name = "Prenume";
             dataGridView1.Columns[2].Name = "Data Nașterii";
             dataGridView1.Columns[3].Name = "Varsta";
-            
+
             IncarcaClientiDinFisier();
 
         }
@@ -45,18 +45,18 @@ namespace FarmacieInterfata
             dataGridView1.Rows.Add(client.nume, client.prenume, client.data_nasterii.ToShortDateString(), varsta);
         }
 
-       
+
         public void IncarcaClientiDinFisier()
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            
+
             dataGridView1.Rows.Clear();
 
-            
-            int nrClienti;  
-            Client[] clienti = adminClienti.GetClient(out nrClienti); 
 
-            
+            int nrClienti;
+            Client[] clienti = adminClienti.GetClient(out nrClienti);
+
+
             foreach (var client in clienti)
             {
                 if (client != null)
@@ -68,10 +68,10 @@ namespace FarmacieInterfata
 
         private void buttonAdauga_click(object sender, EventArgs e)
         {
-           
+
             FormClient formClient = new FormClient();
 
-            
+
             formClient.Show();
 
 
@@ -98,7 +98,7 @@ namespace FarmacieInterfata
             int nrClienti;
             Client[] totiClientii = adminClienti.GetClient(out nrClienti);
 
-            Client[] rezultate = AdministrareClientFisier.cautareINnume(totiClientii, cuvant);
+            Client[] rezultate = AdministrareClientFisier.CautareDupaNumeSauPrenume(totiClientii, cuvant);
 
             dataGridView1.Rows.Clear();
             foreach (var client in rezultate)
@@ -140,8 +140,23 @@ namespace FarmacieInterfata
             }
         }
 
+        private void Editare_doubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                string nume = row.Cells[0].Value.ToString();
+                string prenume = row.Cells[1].Value.ToString();
+                DateTime dataNasterii = DateTime.Parse(row.Cells[2].Value.ToString());
+
+                Client clientEditat = new Client(nume, prenume, dataNasterii);
+
+                FormClient formClient = new FormClient(clientEditat);
+                formClient.Show();
+                this.Hide();
 
 
-
+            }
+        }
     }
 }
