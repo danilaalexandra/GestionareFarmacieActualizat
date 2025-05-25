@@ -1,6 +1,6 @@
 ﻿namespace FarmacieInterfata
 {
-    partial class Form1
+    partial class FormAdministrare
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdministrare));
             this.buttonAdauga = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.buttonDeconectare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAdauga
@@ -70,16 +72,28 @@
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "Gestionare \n             Farmacie";
             // 
-            // Form1
+            // buttonDeconectare
+            // 
+            this.buttonDeconectare.Location = new System.Drawing.Point(674, 415);
+            this.buttonDeconectare.Name = "buttonDeconectare";
+            this.buttonDeconectare.Size = new System.Drawing.Size(105, 23);
+            this.buttonDeconectare.TabIndex = 3;
+            this.buttonDeconectare.Text = "Deconecteaza-te";
+            this.buttonDeconectare.UseVisualStyleBackColor = true;
+            this.buttonDeconectare.Click += new System.EventHandler(this.buttonDeconectare_Click);
+            // 
+            // FormAdministrare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonDeconectare);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonAdauga);
-            this.Name = "Form1";
+            this.Name = "FormAdministrare";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -90,6 +104,7 @@
         private System.Windows.Forms.Button buttonAdauga;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button buttonDeconectare;
     }
 }
 

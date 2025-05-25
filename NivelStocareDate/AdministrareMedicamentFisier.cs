@@ -14,17 +14,14 @@ namespace NivelStocareDate
         public AdministrareMedicamentFisier(string numeFisier)
         {
             this.numeFisier = numeFisier;
-            // se incearca deschiderea fisierului in modul OpenOrCreate
-            // astfel incat sa fie creat daca nu exista
+            
             Stream streamFisierText = File.Open(numeFisier, FileMode.OpenOrCreate);
             streamFisierText.Close();
         }
 
         public void AddMedicament(Medicament medicament)
         {
-            // instructiunea 'using' va apela la final streamWriterFisierText.Close();
-            // al doilea parametru setat la 'true' al constructorului StreamWriter indica
-            // modul 'append' de deschidere al fisierului
+            
             using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisier, true))
             {
                 streamWriterFisierText.WriteLine(medicament.ConversieLaSir_PentruFisier());
@@ -35,14 +32,13 @@ namespace NivelStocareDate
         {
             Medicament[] medicamente = new Medicament[NR_MAX_MEDICAMENTE];
 
-            // instructiunea 'using' va apela streamReader.Close()
+            
             using (StreamReader streamReader = new StreamReader(numeFisier))
             {
                 string linieFisier;
                 nrMedicamente = 0;
 
-                // citeste cate o linie si creaza un obiect 
-                // pe baza datelor din linia citita
+              
                 while ((linieFisier = streamReader.ReadLine()) != null)
                 {
                     medicamente[nrMedicamente++] = new Medicament(linieFisier);

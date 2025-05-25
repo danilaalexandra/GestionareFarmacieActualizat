@@ -31,27 +31,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAfisareClienti));
+            this.dataGridViewClienti = new System.Windows.Forms.DataGridView();
             this.columnNume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDataNaterii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.varsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textCautare = new System.Windows.Forms.TextBox();
+            this.textBoxCautare = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClienti)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewClienti
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewClienti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
+            this.dataGridViewClienti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewClienti.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridViewClienti.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Book Antiqua", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -59,9 +60,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewClienti.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewClienti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClienti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnNume,
             this.columnPrenume,
             this.columnDataNaterii,
@@ -73,10 +74,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.GridColor = System.Drawing.Color.Teal;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 75);
-            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridViewClienti.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewClienti.GridColor = System.Drawing.Color.Teal;
+            this.dataGridViewClienti.Location = new System.Drawing.Point(15, 75);
+            this.dataGridViewClienti.Name = "dataGridViewClienti";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Book Antiqua", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,10 +85,10 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(673, 226);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Editare_doubleClick);
+            this.dataGridViewClienti.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewClienti.Size = new System.Drawing.Size(673, 241);
+            this.dataGridViewClienti.TabIndex = 0;
+            this.dataGridViewClienti.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Editare_doubleClick);
             // 
             // columnNume
             // 
@@ -132,12 +133,12 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.buttonInapoi_click);
             // 
-            // textCautare
+            // textBoxCautare
             // 
-            this.textCautare.Location = new System.Drawing.Point(525, 15);
-            this.textCautare.Name = "textCautare";
-            this.textCautare.Size = new System.Drawing.Size(163, 20);
-            this.textCautare.TabIndex = 3;
+            this.textBoxCautare.Location = new System.Drawing.Point(525, 15);
+            this.textBoxCautare.Name = "textBoxCautare";
+            this.textBoxCautare.Size = new System.Drawing.Size(163, 20);
+            this.textBoxCautare.TabIndex = 3;
             // 
             // button3
             // 
@@ -147,7 +148,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Cauta";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.buttonCauta);
+            this.button3.Click += new System.EventHandler(this.buttonCauta_click);
             // 
             // button4
             // 
@@ -157,23 +158,24 @@
             this.button4.TabIndex = 5;
             this.button4.Text = "Sterge";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnStergeClient_Click);
+            this.button4.Click += new System.EventHandler(this.buttonStergeClient_Click);
             // 
             // FormAfisareClienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textCautare);
+            this.Controls.Add(this.textBoxCautare);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewClienti);
             this.Name = "FormAfisareClienti";
             this.Text = "FormAfisareClient";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClienti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,13 +183,13 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewClienti;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnNume;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrenume;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDataNaterii;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textCautare;
+        private System.Windows.Forms.TextBox textBoxCautare;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn varsta;

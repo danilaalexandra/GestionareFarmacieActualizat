@@ -15,9 +15,9 @@ namespace FarmacieInterfata
             adminClienti = new AdministrareClientFisier("clienti.txt");
 
            
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
+            labelNume.Visible = false;
+            labelPrenume.Visible = false;
+            labelDataNasterii.Visible = false;
         }
 
         public FormClient(Client client)
@@ -26,46 +26,46 @@ namespace FarmacieInterfata
             adminClienti = new AdministrareClientFisier("clienti.txt");
 
 
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
+            labelNume.Visible = false;
+            labelPrenume.Visible = false;
+            labelDataNasterii.Visible = false;
 
             clientEditat = client;
 
-            textBox1.Text = client.nume;
-            textBox2.Text = client.prenume;
-            dateTimePicker1.Value = client.data_nasterii;
+            textBoxNume.Text = client.nume;
+            textBoxPrenume.Text = client.prenume;
+            dateTimePickerDataNasterii.Value = client.data_nasterii;
         }
         private bool ValidareInput()
         {
             bool valid = true;
             errorProvider1.Clear();
 
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
+            labelNume.Visible = false;
+            labelPrenume.Visible = false;
+            labelDataNasterii.Visible = false;
 
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(textBoxNume.Text))
             {
-                errorProvider1.SetError(textBox1, "Prenumele este obligatoriu!");
-                label4.Text = "Prenumele este obligatoriu!";
-                label4.Visible = true;
+                errorProvider1.SetError(textBoxNume, "Prenumele este obligatoriu!");
+                labelNume.Text = "Prenumele este obligatoriu!";
+                labelNume.Visible = true;
                 valid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            if (string.IsNullOrWhiteSpace(textBoxPrenume.Text))
             {
-                errorProvider1.SetError(textBox2, "Numele este obligatoriu!");
-                label5.Text = "Numele este obligatoriu!";
-                label5.Visible = true;
+                errorProvider1.SetError(textBoxPrenume, "Numele este obligatoriu!");
+                labelPrenume.Text = "Numele este obligatoriu!";
+                labelPrenume.Visible = true;
                 valid = false;
             }
 
-            if (dateTimePicker1.Value > DateTime.Today)
+            if (dateTimePickerDataNasterii.Value > DateTime.Today)
             {
-                errorProvider1.SetError(dateTimePicker1, "Data nașterii nu a fost adăugată!");
-                label6.Text = "Data nașterii nu a fost adăugată!";
-                label6.Visible = true;
+                errorProvider1.SetError(dateTimePickerDataNasterii, "Data nașterii nu a fost adăugată!");
+                labelDataNasterii.Text = "Data nașterii nu a fost adăugată!";
+                labelDataNasterii.Visible = true;
                 valid = false;
             }
 
@@ -81,7 +81,7 @@ namespace FarmacieInterfata
 
             try
             {
-                Client client = new Client(textBox1.Text.Trim(), textBox2.Text.Trim(), dateTimePicker1.Value);
+                Client client = new Client(textBoxNume.Text.Trim(), textBoxPrenume.Text.Trim(), dateTimePickerDataNasterii.Value);
 
                 if(clientEditat != null)
                 {
@@ -103,15 +103,15 @@ namespace FarmacieInterfata
 
                 MessageBox.Show("Client adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                textBox1.Clear();
-                textBox2.Clear();
-                dateTimePicker1.Value = DateTime.Today;
-                textBox1.Focus();
+                textBoxNume.Clear();
+                textBoxPrenume.Clear();
+                dateTimePickerDataNasterii.Value = DateTime.Today;
+                textBoxNume.Focus();
 
                 errorProvider1.Clear();
-                label4.Visible = false;
-                label5.Visible = false;
-                label6.Visible = false;
+                labelNume.Visible = false;
+                labelPrenume.Visible = false;
+                labelDataNasterii.Visible = false;
             }
             catch (Exception ex)
             {
@@ -126,6 +126,7 @@ namespace FarmacieInterfata
             form.Show();
             this.Hide();
         }
+
 
     }
 }

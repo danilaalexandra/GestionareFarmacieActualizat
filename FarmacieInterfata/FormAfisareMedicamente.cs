@@ -17,24 +17,24 @@ namespace FarmacieInterfata
 
             adminMedicamente = new AdministrareMedicamentFisier("medicamente.txt");
 
-            dataGridView1.ColumnCount = 4;
-            dataGridView1.Columns[0].Name = "Denumire";
-            dataGridView1.Columns[1].Name = "Pret";
-            dataGridView1.Columns[2].Name = "Necesita Reteta?";
-            dataGridView1.Columns[3].Name = "Categorie";
+            dataGridViewMedicament.ColumnCount = 4;
+            dataGridViewMedicament.Columns[0].Name = "Denumire";
+            dataGridViewMedicament.Columns[1].Name = "Pret";
+            dataGridViewMedicament.Columns[2].Name = "Necesita Reteta?";
+            dataGridViewMedicament.Columns[3].Name = "Categorie";
 
             IncarcaMedicamenteDinFisier();
         }
 
         public void AdaugaMedicamentInTabel(Medicament medicament)
         {
-            dataGridView1.Rows.Add(medicament.denumire, medicament.pret, medicament.necesitaReteta ? "Da" : "Nu", medicament.categorie);
+            dataGridViewMedicament.Rows.Add(medicament.denumire, medicament.pret, medicament.necesitaReteta ? "Da" : "Nu", medicament.categorie);
         }
 
         public void IncarcaMedicamenteDinFisier()
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Rows.Clear();
+            dataGridViewMedicament.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewMedicament.Rows.Clear();
 
             int nrMedicamente;
             Medicament[] medicamente = adminMedicamente.GetMedicamente(out nrMedicamente);
@@ -57,14 +57,14 @@ namespace FarmacieInterfata
 
         private void buttonInapoi_click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            FormAdministrare form = new FormAdministrare();
             form.Show();
             this.Hide();
         }
 
-           private void btnCauta_Click(object sender, EventArgs e)
-        {
-            string cuvant = textCautare.Text.Trim();
+        private void buttonCauta_Click(object sender, EventArgs e)
+        {   
+            string cuvant = textBoxCautare.Text.Trim();
 
             if (string.IsNullOrEmpty(cuvant))
             {
@@ -72,28 +72,28 @@ namespace FarmacieInterfata
                 return;
             }
 
-            int nrMedicamente;
-            Medicament[] toateMedicamentele = adminMedicamente.GetMedicamente(out nrMedicamente);
+              int nrMedicamente;
+              Medicament[] toateMedicamentele = adminMedicamente.GetMedicamente(out nrMedicamente);
 
-            Medicament[] rezultate = AdministrareMedicamentFisier.cautareINdenumire(toateMedicamentele, cuvant);
+              Medicament[] rezultate = AdministrareMedicamentFisier.cautareINdenumire(toateMedicamentele, cuvant);
 
-            dataGridView1.Rows.Clear();
-            foreach (var medicament in rezultate)
-            {
-                if (medicament != null)
-                {
-                    AdaugaMedicamentInTabel(medicament);
-                }
-            }
+              dataGridViewMedicament.Rows.Clear();
+               foreach (var medicament in rezultate)
+               {
+                    if (medicament != null)
+                    {
+                        AdaugaMedicamentInTabel(medicament);
+                    }
+               }
         }
 
         
 
         private void buttonStergere_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridViewMedicament.SelectedRows.Count > 0)
             {
-                string denumireSelectata = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string denumireSelectata = dataGridViewMedicament.SelectedRows[0].Cells[0].Value.ToString();
 
                 var confirmare = MessageBox.Show($"Sigur dorești să ștergi medicamentul '{denumireSelectata}'?", "Confirmare", MessageBoxButtons.YesNo);
                 if (confirmare == DialogResult.Yes)
@@ -119,11 +119,11 @@ namespace FarmacieInterfata
 
         private void Editare_doubleclick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewMedicament.Rows.Count) // verifica indexul sa fie valid
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewMedicament.Rows[e.RowIndex];
 
-               //Daca Valoarea este diferita de null, o schimba intr-o valoare implicita
+               
                 string denumire = row.Cells[0].Value?.ToString();
                 float pret = float.Parse(row.Cells[1].Value?.ToString());
                 bool necesitaReteta = row.Cells[2].Value?.ToString() == "Da";

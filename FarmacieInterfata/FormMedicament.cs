@@ -29,19 +29,19 @@ namespace FarmacieInterfata
            
             medicamentEditat = medicament;
 
-            textBox1.Text = medicament.denumire;
-            numericUpDown1.Value = (decimal)medicament.pret;
-            radioButton1.Checked = medicament.necesitaReteta;
-            radioButton2.Checked = !medicament.necesitaReteta;
-            comboBox1.SelectedItem = medicament.categorie;
+            textBoxDenumire.Text = medicament.denumire;
+            numericUpDownPret.Value = (decimal)medicament.pret;
+            radioButtonDa.Checked = medicament.necesitaReteta;
+            radioButtonNu.Checked = !medicament.necesitaReteta;
+            comboBoxCategorie.SelectedItem = medicament.categorie;
         }
         private void InitializareComboBoxCategorie()
         {
             List<object> categorii = new List<object>();
             categorii.Add("-- Selectează categoria --");
-            categorii.AddRange(Enum.GetValues(typeof(Categorie)).Cast<object>());
-            comboBox1.DataSource = categorii;
-            comboBox1.SelectedIndex = 0;
+            categorii.AddRange(Enum.GetValues(typeof(Categorie)).Cast<object>()); // adauga in lista creata mai sus elementele din enum
+            comboBoxCategorie.DataSource = categorii;
+            comboBoxCategorie.SelectedIndex = 0;
         }
 
 
@@ -51,40 +51,40 @@ namespace FarmacieInterfata
             errorProvider1.Clear();
 
             
-            label5.Visible = false;
-            label6.Visible = false;
-            label7.Visible = false;
-            label8.Visible = false;
+            labelDenumire.Visible = false;
+            labelPret.Visible = false;
+            labelNecesitaReteta.Visible = false;
+            labelCategorie.Visible = false;
 
 
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(textBoxDenumire.Text))
             {
-                errorProvider1.SetError(textBox1, "Denumirea este obligatorie!");
-                label5.Text = "Denumirea este obligatorie!";
-                label5.Visible = true;
+                errorProvider1.SetError(textBoxDenumire, "Denumirea este obligatorie!");
+                labelDenumire.Text = "Denumirea este obligatorie!";
+                labelDenumire.Visible = true;
                 valid = false;
             }
 
-            if (!radioButton1.Checked && !radioButton2.Checked)
+            if (!radioButtonDa.Checked && !radioButtonNu.Checked)
             {
-                errorProvider1.SetError(radioButton2, "Selectați dacă necesită rețetă!");
-                label7.Text = "Selectați dacă necesită rețetă!";
-                label7.Visible = true;
+                errorProvider1.SetError(radioButtonNu, "Selectați dacă necesită rețetă!");
+                labelNecesitaReteta.Text = "Selectați dacă necesită rețetă!";
+                labelNecesitaReteta.Visible = true;
                 valid = false;
             }
-            if (numericUpDown1.Value <= 0)
+            if (numericUpDownPret.Value <= 0)
             {
-                errorProvider1.SetError(numericUpDown1, "Introduceți un preț mai mare decât 0!");
-                label6.Text = "Introduceți un preț mai mare decât 0!";
-                label6.Visible = true;
+                errorProvider1.SetError(numericUpDownPret, "Introduceți un preț mai mare decât 0!");
+                labelPret.Text = "Introduceți un preț mai mare decât 0!";
+                labelPret.Visible = true;
                 valid = false;
             }
 
-            if (!(comboBox1.SelectedItem is Categorie))
+            if (!(comboBoxCategorie.SelectedItem is Categorie))
             {
-                errorProvider1.SetError(comboBox1, "Selectați o categorie!");
-                label8.Text = "Selectați o categorie!";
-                label8.Visible = true;
+                errorProvider1.SetError(comboBoxCategorie, "Selectați o categorie!");
+                labelCategorie.Text = "Selectați o categorie!";
+                labelCategorie.Visible = true;
                 valid = false;
             }
             
@@ -102,10 +102,10 @@ namespace FarmacieInterfata
 
             try
             {
-                string denumire = textBox1.Text.Trim();
-                float pret = (float)numericUpDown1.Value;
-                bool necesitaReteta = radioButton1.Checked;
-                Categorie categorieAleasa = (Categorie)comboBox1.SelectedItem;
+                string denumire = textBoxDenumire.Text.Trim();
+                float pret = (float)numericUpDownPret.Value;
+                bool necesitaReteta = radioButtonDa.Checked;
+                Categorie categorieAleasa = (Categorie)comboBoxCategorie.SelectedItem;
 
                 Medicament medicament = new Medicament(denumire, pret, necesitaReteta)
                 {
@@ -130,17 +130,18 @@ namespace FarmacieInterfata
                 MessageBox.Show("Medicament adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                textBox1.Clear();
-                numericUpDown1.Value = 0;
-                radioButton1.Checked = false;
-                radioButton2.Checked = false;
-                comboBox1.SelectedIndex = -1;
-                textBox1.Focus();
+                textBoxDenumire.Clear();
+                numericUpDownPret.Value = 0;
+                radioButtonDa.Checked = false;
+                radioButtonNu.Checked = false;
+                comboBoxCategorie.SelectedIndex = -1;
+                textBoxDenumire.Focus();
 
                 errorProvider1.Clear();
-                label4.Visible = false;
-                label6.Visible = false;
-                label8.Visible = false;
+                labelDenumire.Visible = false;
+                labelPret.Visible = false;
+                labelCategorie.Visible = false;
+                labelNecesitaReteta.Visible = false;
             }
             catch (Exception ex)
             {
@@ -156,6 +157,6 @@ namespace FarmacieInterfata
             this.Hide();
         }
 
- 
+       
     }
 }

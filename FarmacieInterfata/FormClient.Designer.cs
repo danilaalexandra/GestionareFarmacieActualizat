@@ -1,4 +1,4 @@
-﻿namespace FarmacieInterfata
+﻿    namespace FarmacieInterfata
 {
     partial class FormClient
     {
@@ -30,38 +30,34 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClient));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxNume = new System.Windows.Forms.TextBox();
+            this.textBoxPrenume = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataNasterii = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelNume = new System.Windows.Forms.Label();
+            this.labelPrenume = new System.Windows.Forms.Label();
+            this.labelDataNasterii = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxNume
             // 
-            this.textBox1.Location = new System.Drawing.Point(282, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(316, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxNume.Location = new System.Drawing.Point(282, 59);
+            this.textBoxNume.Name = "textBoxNume";
+            this.textBoxNume.Size = new System.Drawing.Size(316, 20);
+            this.textBoxNume.TabIndex = 0;
             // 
-            // textBox2
+            // textBoxPrenume
             // 
-            this.textBox2.Location = new System.Drawing.Point(282, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(316, 20);
-            this.textBox2.TabIndex = 1;
+            this.textBoxPrenume.Location = new System.Drawing.Point(282, 120);
+            this.textBoxPrenume.Name = "textBoxPrenume";
+            this.textBoxPrenume.Size = new System.Drawing.Size(316, 20);
+            this.textBoxPrenume.TabIndex = 1;
             // 
             // label1
             // 
@@ -87,7 +83,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Book Antiqua", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(102, 192);
+            this.label3.Location = new System.Drawing.Point(102, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 5;
@@ -105,12 +101,12 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.buttonAdauga_Click_1);
             // 
-            // dateTimePicker1
+            // dateTimePickerDataNasterii
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(282, 192);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(316, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePickerDataNasterii.Location = new System.Drawing.Point(282, 192);
+            this.dateTimePickerDataNasterii.Name = "dateTimePickerDataNasterii";
+            this.dateTimePickerDataNasterii.Size = new System.Drawing.Size(316, 20);
+            this.dateTimePickerDataNasterii.TabIndex = 7;
             // 
             // button2
             // 
@@ -127,71 +123,63 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
-            // errorProvider2
+            // labelNume
             // 
-            this.errorProvider2.ContainerControl = this;
-            this.errorProvider2.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider2.Icon")));
+            this.labelNume.AutoSize = true;
+            this.labelNume.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNume.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelNume.Location = new System.Drawing.Point(625, 65);
+            this.labelNume.Name = "labelNume";
+            this.labelNume.Size = new System.Drawing.Size(54, 14);
+            this.labelNume.TabIndex = 9;
+            this.labelNume.Text = "Prenume";
+            this.labelNume.Visible = false;
             // 
-            // errorProvider3
+            // labelPrenume
             // 
-            this.errorProvider3.ContainerControl = this;
-            this.errorProvider3.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider3.Icon")));
+            this.labelPrenume.AutoSize = true;
+            this.labelPrenume.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrenume.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelPrenume.Location = new System.Drawing.Point(625, 128);
+            this.labelPrenume.Name = "labelPrenume";
+            this.labelPrenume.Size = new System.Drawing.Size(54, 14);
+            this.labelPrenume.TabIndex = 10;
+            this.labelPrenume.Text = "Prenume";
+            this.labelPrenume.Visible = false;
             // 
-            // label4
+            // labelDataNasterii
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DarkRed;
-            this.label4.Location = new System.Drawing.Point(625, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 14);
-            this.label4.TabIndex = 9;
-            this.label4.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkRed;
-            this.label5.Location = new System.Drawing.Point(625, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 14);
-            this.label5.TabIndex = 10;
-            this.label5.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkRed;
-            this.label6.Location = new System.Drawing.Point(625, 192);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 14);
-            this.label6.TabIndex = 11;
-            this.label6.Visible = false;
+            this.labelDataNasterii.AutoSize = true;
+            this.labelDataNasterii.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataNasterii.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelDataNasterii.Location = new System.Drawing.Point(625, 198);
+            this.labelDataNasterii.Name = "labelDataNasterii";
+            this.labelDataNasterii.Size = new System.Drawing.Size(54, 14);
+            this.labelDataNasterii.TabIndex = 11;
+            this.labelDataNasterii.Text = "Prenume";
+            this.labelDataNasterii.Visible = false;
             // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelDataNasterii);
+            this.Controls.Add(this.labelPrenume);
+            this.Controls.Add(this.labelNume);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerDataNasterii);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPrenume);
+            this.Controls.Add(this.textBoxNume);
             this.Name = "FormClient";
             this.Text = resources.GetString("$this.Text");
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,19 +187,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxNume;
+        private System.Windows.Forms.TextBox textBoxPrenume;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataNasterii;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
-        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.Label labelDataNasterii;
+        private System.Windows.Forms.Label labelPrenume;
+        private System.Windows.Forms.Label labelNume;
     }
 }

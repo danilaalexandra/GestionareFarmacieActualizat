@@ -35,7 +35,7 @@ namespace FarmacieLibrarie
         {
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
 
-            //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ConversieLaSir_PentruFisier()
+     
 
             this.nume = dateFisier[NUME];
             this.prenume = dateFisier[PRENUME];
@@ -51,19 +51,7 @@ namespace FarmacieLibrarie
 
             return obiectClientPentruFisier;
         }
-        public static bool ValidareNume(string nume)
-        {
-            if (string.IsNullOrWhiteSpace(nume))
-                return false;
-            else return true;
-        }
-        public static bool ValidarePrenume(string prenume)
-        {
-            if (string.IsNullOrWhiteSpace(prenume))
-                return false;
-            else return true;
-        }
-
+       
 
     }
 }

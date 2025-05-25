@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FarmacieInterfata
 {
-    public partial class Form1 : Form
+    public partial class FormAdministrare : Form
     {
-        public Form1()
+        public FormAdministrare()
         {
             InitializeComponent();
 
@@ -42,7 +42,17 @@ namespace FarmacieInterfata
             this.Hide();
         }
 
-        
+        private void buttonDeconectare_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Sigur dorești să te deloghezi?", "Confirmare", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                FormLogIn loginForm = new FormLogIn();
+                loginForm.Show();
+                this.Close();
+            }
+        }
     }
 }
 

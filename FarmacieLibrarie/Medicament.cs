@@ -46,7 +46,7 @@ namespace FarmacieLibrarie
         {
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
 
-            //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ConversieLaSir_PentruFisier()
+    
 
             this.denumire = dateFisier[DENUMIRE];
             this.pret = float.Parse(dateFisier[PRET].Replace(',', '.'), CultureInfo.InvariantCulture);
@@ -67,12 +67,5 @@ namespace FarmacieLibrarie
             return obiectMedicamentPentruFisier;
         }
 
-        public static bool ValidareDenumire(string denumire)
-        {
-            if (string.IsNullOrWhiteSpace(denumire))
-                return false;
-            else return true;
-
-        }
     }
 }

@@ -16,11 +16,11 @@ namespace FarmacieInterfata
 
             adminClienti = new AdministrareClientFisier("clienti.txt");
 
-            dataGridView1.ColumnCount = 4;
-            dataGridView1.Columns[0].Name = "Nume";
-            dataGridView1.Columns[1].Name = "Prenume";
-            dataGridView1.Columns[2].Name = "Data Nașterii";
-            dataGridView1.Columns[3].Name = "Varsta";
+            dataGridViewClienti.ColumnCount = 4;
+            dataGridViewClienti.Columns[0].Name = "Nume";
+            dataGridViewClienti.Columns[1].Name = "Prenume";
+            dataGridViewClienti.Columns[2].Name = "Data Nașterii";
+            dataGridViewClienti.Columns[3].Name = "Varsta";
 
             IncarcaClientiDinFisier();
 
@@ -42,15 +42,15 @@ namespace FarmacieInterfata
         public void AdaugaClientInTabel(Client client)
         {
             int varsta = CalculeazaVarsta(client.data_nasterii);
-            dataGridView1.Rows.Add(client.nume, client.prenume, client.data_nasterii.ToShortDateString(), varsta);
+            dataGridViewClienti.Rows.Add(client.nume, client.prenume, client.data_nasterii.ToShortDateString(), varsta);
         }
 
 
         public void IncarcaClientiDinFisier()
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewClienti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dataGridView1.Rows.Clear();
+            dataGridViewClienti.Rows.Clear();
 
 
             int nrClienti;
@@ -80,14 +80,14 @@ namespace FarmacieInterfata
 
         private void buttonInapoi_click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            FormAdministrare form = new FormAdministrare();
             form.Show();
             this.Hide();
         }
 
-        private void buttonCauta(object sender, EventArgs e)
+        private void buttonCauta_click(object sender, EventArgs e)
         {
-            string cuvant = textCautare.Text.Trim();
+            string cuvant = textBoxCautare.Text.Trim();
 
             if (string.IsNullOrEmpty(cuvant))
             {
@@ -100,7 +100,7 @@ namespace FarmacieInterfata
 
             Client[] rezultate = AdministrareClientFisier.CautareDupaNumeSauPrenume(totiClientii, cuvant);
 
-            dataGridView1.Rows.Clear();
+            dataGridViewClienti.Rows.Clear();
             foreach (var client in rezultate)
             {
                 if (client != null)
@@ -110,18 +110,18 @@ namespace FarmacieInterfata
             }
         }
 
-        private void btnStergeClient_Click(object sender, EventArgs e)
+        private void buttonStergeClient_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridViewClienti.SelectedRows.Count > 0)
             {
-                string nume = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string prenume = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string nume = dataGridViewClienti.SelectedRows[0].Cells[0].Value.ToString();
+                string prenume = dataGridViewClienti.SelectedRows[0].Cells[1].Value.ToString();
 
                 var confirmare = MessageBox.Show($"Sigur dorești să ștergi clientul {nume} {prenume}?", "Confirmare", MessageBoxButtons.YesNo);
 
                 if (confirmare == DialogResult.Yes)
                 {
-                    bool sters = adminClienti.StergeClient(nume, prenume); // vezi pasul următor
+                    bool sters = adminClienti.StergeClient(nume, prenume); 
 
                     if (sters)
                     {
@@ -142,9 +142,9 @@ namespace FarmacieInterfata
 
         private void Editare_doubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewClienti.Rows.Count)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewClienti.Rows[e.RowIndex];
                 string nume = row.Cells[0].Value.ToString();
                 string prenume = row.Cells[1].Value.ToString();
                 DateTime dataNasterii = DateTime.Parse(row.Cells[2].Value.ToString());
@@ -158,5 +158,7 @@ namespace FarmacieInterfata
 
             }
         }
+
+
     }
 }
